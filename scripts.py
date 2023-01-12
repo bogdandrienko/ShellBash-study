@@ -200,6 +200,18 @@ def ubuntu():
     sudo systemctl restart ssh
     # TODO work with openssh-server
 
+    # todo disable swap
+    free -m
+    swapon -s
+    swapon -show
+    sudo swapoff -v /swapfile
+    sudo rm -f /swapfile
+    # todo disable swap
+
+    # todo enable swap
+    dd if =/dev/zero of=/swapfile bs=1024 count=1048576
+    # todo enable swap
+
     # todo clear system cache
     # login to root user
     sudo -i
@@ -337,21 +349,21 @@ def postgresql_ubuntu():
 
     # todo create new user and database
     # postgres-user
-    createuser pg_usr
-    createdb pg_db -O pg_usr
+    createuser pgs_usr
+    createdb pgs_db -O pgs_usr
 
     # postgres-psql
-    CREATE USER pg_usr WITH PASSWORD '12345Qwerty!';
-    CREATE DATABASE pg_db OWNER pg_usr;
+    CREATE USER pgs_usr WITH PASSWORD '12345Qwerty!';
+    CREATE DATABASE pgs_db OWNER pgs_usr;
 
     # change password
-    alter user pg_usr with password '12345Qwerty!';
+    alter user pgs_usr with password '12345Qwerty!';
 
     # grant role
-    GRANT ALL PRIVILEGES ON DATABASE pg_db TO pg_usr;
-    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to pg_usr;
-    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to pg_usr;
-    GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to pg_usr;
+    GRANT ALL PRIVILEGES ON DATABASE pgs_db TO pgs_usr;
+    GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to pgs_usr;
+    GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public to pgs_usr;
+    GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public to pgs_usr;
 
     # todo check 1
     CREATE TABLE zarplata ( id serial PRIMARY KEY, username VARCHAR ( 50 ) UNIQUE NOT NULL, salary INT );
@@ -374,6 +386,12 @@ def postgresql_ubuntu():
     \q
     exit
     # todo check 2
+
+    # todo check 3
+    create table books (id serial not null unique, title varchar(255) not null, author varchar(255) not null);
+    \q
+    exit
+    # todo check 3
 
     # todo share data on net
     sudo nano /etc/postgresql/14/main/postgresql.conf
@@ -476,6 +494,8 @@ def go():
 
     # todo create binary(linux) or .exe(windows) file
     go build main.go
+    go build -o x.exe -C bar
+
 
     """
     pass
@@ -1151,8 +1171,23 @@ def certbot_ubuntu_python_django():
 
 def curl_ubuntu():
     """
-    curl -v -X GET -H 'x-id:1' 127.0.0.1:8080/todos
-    curl -v -X POST -H 'x-id:1' 127.0.0.1:8080/todos -d '{"userId":2,"id":2,"title":"11111111111111","completed":true}'
+    # curl -v -X GET -H 'x-id:1' 127.0.0.1:8080/todos
+    # curl -v -X POST -H 'x-id:1' 127.0.0.1:8080/todos -d '{"userId":2,"id":2,"title":"11111111111111","completed":true}'
+
+    // Create
+    // curl -v -X POST 127.0.0.1:8080/books -d '{"id":4,"title":"Amon Ra","author":"V.Pelevin"}'
+
+    // Read
+    // curl -v -X GET 127.0.0.1:8080/books/1
+
+    // Read all
+    // curl -v -X GET 127.0.0.1:8080/books
+
+    // Update
+    // curl -v -X PUT 127.0.0.1:8080/books/1 -d '{"title":"War and peace","author":"N.Tolstoy"}'
+
+    // Delete
+    // curl -v -X DELETE 127.0.0.1:8080/books/1
     """
     pass
 
