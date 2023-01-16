@@ -6,6 +6,13 @@ def extra():
     """
     pass
 
+def hotkeys():
+    """
+    show all blocks: Ctl+a -> Ctrl+Shift+'+'
+    hide all blocks: Ctl+a -> Ctrl+Shift+'-'
+    """
+    pass
+
 # TODO EXTRA ###########################################################################################################
 
 #
@@ -86,8 +93,8 @@ def ubuntu_first_setup():
     curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
     source ~/.bashrc
     nvm ls-remote
-    nvm install 18.10.0
-    nvm use 18.10.0
+    nvm install 18.13.0
+    nvm use 18.13.0
     # todo install node-js
 
     # todo install python ide
@@ -476,7 +483,7 @@ def go():
     # todo create new project
     cd ~/Downloads
     mkdir gin-rest-api && gin-rest-api
-    go mod init example/gin-rest-api
+    go mod init github/bogdandrienko/gin-rest-api-v2
 
     # todo add needs and remove trash libs
     go mod tidy
