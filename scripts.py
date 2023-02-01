@@ -48,6 +48,7 @@ def ubuntu_first_setup():
     # disable show personal folder (settings -> appearance)
     # set panel to bottom (settings -> appearance -> dock)
     # set backgroud image (settings -> backgroud)
+    # set scree blank 1 min (settings -> power)
     # remove apps from panel
     # add russian language (settings -> region & language)
     # add russian to keyboard (settings -> keyboard)
@@ -65,7 +66,7 @@ def ubuntu_first_setup():
 
     # additional modules
     sudo apt-get install -y nginx gunicorn docker-compose postgresql postgresql-contrib redis openssh-server
-    sudo snap install -y --classic certbot gh
+    sudo snap install --classic certbot gh
     # todo install modules
 
     # todo install google-chrome
@@ -102,7 +103,7 @@ def ubuntu_first_setup():
     # todo install python ide
 
     # todo install go ide
-    sudo snap install -y goland --classic
+    sudo snap install goland --classic
     # todo install go ide
 
     # todo install rust ide
@@ -125,19 +126,37 @@ def ubuntu_first_setup():
     # todo install putty-ssh-client
 
     # todo install postgresql-pgadmin4
-    curl -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/pgadmin.gpg
-    sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
-    sudo apt install -y pgadmin4-desktop
+    curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+    sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+    sudo apt-get install -y pgadmin4
     # todo install postgresql-pgadmin4
 
     # TODO install virtualbox
     sudo apt-get install -y virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso virtualbox-guest-utils dkms virtualbox-dkms
     # TODO install virtualbox
+
+
+    # TODO IDE settings
+    # create email on mail.ru
+    # create account on jetbrains.com
+    # start ide, link account, start trial
+    # settings -> set font 18
+    # settings -> general -> set mouse scroll change font
+    # settings -> set new Ui
+    # plugins -> install
+    # TODO IDE settings
     """
     pass
 
 def windows_first_setup():
     """
+    # todo basic
+    # create windows VM (2023_01_22_windows_10_ltsb)
+    # change VM settings (network, ram, core, shared folder, shared clipboard...)
+    # setup windows 10 ltsb (Normal installation (user + user-PC))
+    # todo basic
+
+    change personalization and audio theme
     update system
     install DWS and SSD Mini Tweaker
     insert guest-additions and install
@@ -510,8 +529,8 @@ def go():
 def go_gin_rest_api():
     """
     cd ~/Downloads
-    mkdir gin-rest-api && gin-rest-api
-    go mod init example/gin-rest-api
+    mkdir gin-rest-api
+    go mod init github.com/bogdandrienko/gin-rest-api
     cd gin-rest-api
     nano main.go
     <file>
