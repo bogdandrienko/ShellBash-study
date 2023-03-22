@@ -145,6 +145,11 @@ def ubuntu_first_setup():
     # settings -> set new Ui
     # plugins -> install
     # TODO IDE settings
+    
+    # TODO kill freezed process
+    ps aux | grep -i apt
+    sudo kill -9 6666
+    # TODO kill freezed process
     """
     pass
 
@@ -158,8 +163,9 @@ def windows_first_setup():
 
     change personalization and audio theme
     update system
-    install DWS and SSD Mini Tweaker
     insert guest-additions and install
+    install DWS and SSD Mini Tweaker
+    change perfonamse settings
     install all need programs
     """
     pass
@@ -502,7 +508,7 @@ def go():
     # todo create new project
     cd ~/Downloads
     mkdir gin-rest-api && gin-rest-api
-    go mod init github/bogdandrienko/gin-rest-api-v2
+    go mod init github/bogdandrienko/gin-rest-api
 
     # todo add needs and remove trash libs
     go mod tidy
@@ -531,6 +537,7 @@ def go_gin_rest_api():
     cd ~/Downloads
     mkdir gin-rest-api
     go mod init github.com/bogdandrienko/gin-rest-api
+    go mod init github.com/bogdandrienko/gin_tsx_app_2023_03_develop
     cd gin-rest-api
     nano main.go
     <file>
