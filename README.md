@@ -1,4 +1,4 @@
 # ShellBash-study
 study
 
-[scripts.py](scripts.py)
+[scripts.py](__scripts.py)
